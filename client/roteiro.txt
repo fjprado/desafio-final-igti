@@ -1,0 +1,33 @@
+Desafio Final - roteiro
+==========================
+
+(X) Criar state com hooks em App.js
+   (X) initialPeriod - 2020-07
+   (X) transactions []
+   (X) transactionsFiltered []
+   
+() Criar effect para mostrar todas as transações
+   na função showTransactions, com deps =
+   [initialPeriod, transactions]
+   
+
+() Implementar os seguintes componentes:
+
+   () Header, tendo um select por mês/ano, 
+      e um quadro de totais (lançamentos, 
+      receitas, despesas e saldo).
+
+   () SearchBar, buscando por nome dos lançamentos.
+   
+   () Model/Form, com radioButton (tipo), 2 
+      campos de texto, um de numero e outro
+      de data e invocando onChangeData, que 
+      por sua vez invoca handleFormChanges 
+      de App.js.
+
+   () Transactions, que vai ser o container 
+      de Transaction e receberá as transações.   
+
+   () Transaction, que será renderizado para 
+      cada transaction, dividido em dia, dados,
+      valor e funções.
