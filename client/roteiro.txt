@@ -6,28 +6,28 @@ Desafio Final - roteiro
    (X) transactions []
    (X) transactionsFiltered []
    
-() Criar effect para mostrar todas as transações
+(X) Criar effect para mostrar todas as transações
    na função showTransactions, com deps =
    [initialPeriod, transactions]
    
 
-() Implementar os seguintes componentes:
+(X) Implementar os seguintes componentes:
 
-   () Header, tendo um select por mês/ano, 
+   (X) Header, tendo um select por mês/ano, 
       e um quadro de totais (lançamentos, 
       receitas, despesas e saldo).
 
-   () SearchBar, buscando por nome dos lançamentos.
+   (X) SearchBar, buscando por nome dos lançamentos.
    
-   () Model/Form, com radioButton (tipo), 2 
+   (X) Model/Form, com radioButton (tipo), 2 
       campos de texto, um de numero e outro
       de data e invocando onChangeData, que 
       por sua vez invoca handleFormChanges 
       de App.js.
 
-   () Transactions, que vai ser o container 
+   (X) Transactions, que vai ser o container 
       de Transaction e receberá as transações.   
 
-   () Transaction, que será renderizado para 
+   (X) Transaction, que será renderizado para 
       cada transaction, dividido em dia, dados,
       valor e funções.
