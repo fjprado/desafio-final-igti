@@ -1,5 +1,5 @@
 import axios from "axios";
-const { API_URL } = process.env;
+const API_URL = "https://fjprado-desafio-final.herokuapp.com/api/transaction";
 
 async function getTransactions(filteredPeriod) {
   const response = await axios.get(`${API_URL}/?period=${filteredPeriod}`);
