@@ -51,10 +51,17 @@ export default function ModalTransaction({
       year: dataInput.getUTCFullYear(),
       month: dataInput.getUTCMonth() + 1,
       day: dataInput.getUTCDate(),
-      yearMonth: `${dataInput.getFullYear()}-${(dataInput.getMonth() + 1)
+      yearMonth: `${dataInput.getUTCFullYear()}-${(dataInput.getUTCMonth() + 1)
         .toString()
         .padStart(2, "0")}`,
-      yearMonthDay: inputDate.value,
+      yearMonthDay: `${dataInput.getUTCFullYear()}-${(
+        dataInput.getUTCMonth() + 1
+      )
+        .toString()
+        .padStart(2, "0")}-${dataInput
+        .getUTCDate()
+        .toString()
+        .padStart(2, "0")}`,
     };
 
     onSave(formData);

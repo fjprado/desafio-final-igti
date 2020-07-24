@@ -12,12 +12,15 @@ import {
 } from "./services/TransactionService";
 import ModalTransaction from "./components/modal/ModalTransaction";
 import ModalNewTransaction from "./components/modal/ModalNewTransaction";
+import TotalValue from "./components/header/TotalValue";
 Modal.setAppElement("*");
 
 export default function App() {
   const [initialPeriod, setInitialPeriod] = React.useState("2020-07");
   const [transactions, setTransactions] = React.useState([]);
   const [transactionsFiltered, setTransactionsFiltered] = React.useState([]);
+  const [totalValue, setTotalValue] = React.useState(0);
+  const [valueFiltered, setValueFiltered] = React.useState(0);
   const [totalReceitas, setTotalReceitas] = React.useState(0);
   const [totalDespesas, setTotalDespesas] = React.useState(0);
   const [filter, setFilter] = React.useState("");
@@ -30,8 +33,11 @@ export default function App() {
     const fetchTransactions = async (filteredPeriod) => {
       const res = await getTransactions(filteredPeriod);
       setTransactions(res.data);
-      setTotalReceitas(calculateTotalReceitas(res.data));
-      setTotalDespesas(calculateTotalDespesas(res.data));
+      const receitas = calculateTotalReceitas(res.data);
+      const despesas = calculateTotalDespesas(res.data);
+      setTotalReceitas(receitas);
+      setTotalDespesas(despesas);
+      setTotalValue(+receitas - despesas);
     };
     fetchTransactions(initialPeriod);
     if (status) setStatus(false);
@@ -42,6 +48,16 @@ export default function App() {
       const filteredItems = transactions.filter((item) => {
         return item.description.toLowerCase().includes(filter.toLowerCase());
       });
+      const filteredItemsValue = transactions
+        .filter((item) => {
+          return item.description.toLowerCase().includes(filter.toLowerCase());
+        })
+        .reduce((accumulator, current) => {
+          return current.type === "+"
+            ? accumulator + current.value
+            : accumulator - current.value;
+        }, 0);
+      setValueFiltered(filteredItemsValue);
       setTransactionsFiltered(filteredItems);
     };
     filteredTransactions(filter);
@@ -125,8 +141,11 @@ export default function App() {
             + Novo Lançamento
           </button>
         </div>
-        <div className="col s9 flow-text">
+        <div className="col s7 flow-text">
           <SearchBar filter={filter} onFilterChange={handleFilterChange} />
+        </div>
+        <div className="col s2 flow-text">
+          <TotalValue totalValue={filter !== "" ? valueFiltered : totalValue} />
         </div>
       </div>
 
