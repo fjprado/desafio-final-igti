@@ -1,4 +1,5 @@
 import React from "react";
+import { formatCurrency } from "../../helpers/FormatCurrency";
 
 export default function TotalValue({ totalValue }) {
   return (
@@ -16,9 +17,11 @@ const styles = {
   totalPositivo: {
     color: "blue",
     fontWeight: "bold",
+    fontSize: "1rem",
   },
   totalNegativo: {
     color: "red",
     fontWeight: "bold",
+    fontSize: "1rem",
   },
 };

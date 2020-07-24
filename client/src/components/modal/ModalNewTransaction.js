@@ -75,7 +75,7 @@ export default function ModalNewTransaction({ onSaveNew, onClose }) {
             </label>
           </div>
           <div className="input-field">
-            <input id="inputValue" type="number" step="1" />
+            <input id="inputValue" type="number" step=".01" />
             <label className="active" htmlFor="inputValue">
               Valor:
             </label>

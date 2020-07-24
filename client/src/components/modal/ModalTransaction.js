@@ -110,7 +110,7 @@ export default function ModalTransaction({
               id="inputValue"
               type="number"
               defaultValue={value}
-              step="1"
+              step=".01"
               onChange={validateInput}
             />
             <label className="active" htmlFor="inputValue">
